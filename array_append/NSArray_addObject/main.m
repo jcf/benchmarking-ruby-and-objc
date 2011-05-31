@@ -13,18 +13,17 @@ int main (int argc, const char * argv[])
   
   NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
   
-  NSDate *startDate = [NSDate date];
-  
   NSMutableArray *stomach = [[NSMutableArray alloc] init];
-  NSString *string = @"string";
   
-  for (int i = 0; i < 1000000; i++) {
-    [stomach addObject:string];
+  NSTimeInterval start = [NSDate timeIntervalSinceReferenceDate];
+  
+  for (int i = 0; i < 10000000; i++) {
+    [stomach addObject:@"string"];
   }
   
-  NSTimeInterval elapsed = -[startDate timeIntervalSinceNow];
+  NSTimeInterval duration = [NSDate timeIntervalSinceReferenceDate] - start;
   
-  NSLog(@"Elapsed: %g", elapsed);
+  NSLog(@"Duration: %gs", duration);
   
   [pool drain];
   return 0;
